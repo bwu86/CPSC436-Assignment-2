@@ -44,7 +44,7 @@ class TodoItem extends Component {
         console.log(this.props.time)
         return(
             <div style={this.getStyle()}>
-                <p>
+                <p style = {pStyle}>
                     <input type = "checkbox" onChange={this.onCheck}/> {' '}
                     {this.props.title}
                     {/*Add detailed view here!*/}
@@ -67,6 +67,11 @@ const buttonStyle = {
     borderRadius: '50%',
     cursor: 'pointer',
     float: 'right'
+}
+
+const pStyle = {
+    fontSize: '16px',
+    fontFamily: 'Arial, Helvetica, sans-serif'
 }
 
 const mapDispatchToProps = (dispatch) => {

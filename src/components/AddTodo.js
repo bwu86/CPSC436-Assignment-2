@@ -29,6 +29,8 @@ class AddTodo extends Component {
                   }}/>
                 <button onClick = {this.onSubmit}>Submit</button>
                 <button onClick = {this.clearTodos}>Clear Todos</button>
+                <br></br>
+                <br></br>
             </div>
         );
     }
