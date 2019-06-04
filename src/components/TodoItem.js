@@ -1,36 +1,41 @@
 import React, { Component } from 'react'
-import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { toggleTodo } from '../actions/TodoAction' 
+import { removeTodo } from '../actions/TodoAction' 
 
+class TodoItem extends Component {
 
-export class TodoItem extends Component {
     getStyle = () => {
         return {
             background: '#f4f4f4',
             padding: '10px',
             borderBottom: '1px #ccc dotted',
-            textDecoration: this.props.todo.completed ? 
+            textDecoration: this.props.completed ? 
             'line-through' : 'none'
         }
     }
 
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.actions.removeTodo(this.props.key);
+    }
+
+    onCheck = () => {
+        this.props.actions.toggleTodo(this.props.key);        
+    }
 
     render() {
-        const {id, title} = this.props.todo;
-        return (
+        console.log(this.props)
+        return(
             <div style={this.getStyle()}>
                 <p>
-                    <input type = "checkbox" onChange={this.props.markComplete.bind(this, id)}/> {' '}
-                    {title}
-                    <button onClick={this.props.deleteTodo.bind(this, id)} style = {buttonStyle}>x</button>
+                    <input type = "checkbox" onChange={this.onCheck}/> {' '}
+                    {this.props.title}
+                    <button onClick={this.onSubmit} style = {buttonStyle}>x</button>
                 </p>
             </div>
-        )
+        );
     }
-}
-
-//PropTypes
-TodoItem.propTypes = {
-    todo: PropTypes.object.isRequired
 }
 
 const buttonStyle = {
@@ -43,6 +48,4 @@ const buttonStyle = {
     float: 'right'
 }
 
-
-
-export default TodoItem
+export default connect()(TodoItem);

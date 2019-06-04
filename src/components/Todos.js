@@ -1,13 +1,16 @@
 import React from 'react';
 import TodoItem from './TodoItem';
+import { Component } from 'react';
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 
-class Todos extends React.Component {
-
-    render() {
-        return this.props.todos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} markComplete={this.props.markComplete}
-            deleteTodo = {this.props.deleteTodo}/>
+class Todos extends Component {
+    render(){
+        console.log(this.props.todos)
+        return this.props.todos!= null && this.props.todos.map((todo) => (
+            <div>
+                <TodoItem key={todo.key} title={todo.title} completed = {todo.completed}/>        
+            </div>
         ));
     }
 }
@@ -17,4 +20,10 @@ Todos.propTypes = {
     todos: PropTypes.array.isRequired
 }
 
-export default Todos;
+const mapStateToProps = (state) => {
+    return {
+      todos: state.todos
+    };
+}
+  
+export default connect(mapStateToProps)(Todos);

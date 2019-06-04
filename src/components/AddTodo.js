@@ -1,37 +1,32 @@
 import React, { Component } from 'react'
+import { resetTodos } from '../actions/TodoAction'
+import { addTodo } from '../actions/TodoAction'
+import { connect } from 'react-redux';
 
-export class AddTodo extends Component {
+class AddTodo extends Component {
 
-    state = {
-        title: ''
-    }
-
-    onChange = (e) => this.setState({[e.target.name]: e.target.value});
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.addTodo(this.state.title);
-        this.setState({title: ''});
+        this.props.addTodo(this.refs.todo.value);
     }
+
+    clearTodos = (e)=> {
+        this.props.resetTodos()
+    }
+
     render() {
         return (
-            <form onSubmit = {this.onSubmit}style = {{display: 'flex'}}>
-                <input 
-                    type='text' 
-                    name='title' 
-                    style = {{flex:'10', padding : '5px'}}
-                    placeholder="Add a todo..."
-                    value = {this.state.title}
-                    onChange = {this.onChange}
-                />
-                <input 
-                    type ="submit" 
-                    value ="Submit"
-                    className="btn"
-                    style = {{flex: '1'}}
-                />
-            </form>
-        )
+            <div>
+                <input type="text" ref="todo" placeholder="Add task..."/>
+                <button onClick = {this.onSubmit}>Submit</button>
+                <button onClick = {this.clearTodos}>Clear Todos</button>
+            </div>
+        );
     }
 }
 
-export default AddTodo
+const mapStateToProps = (state) => {
+    return { todos: state.todos }
+}
+
+export default connect(mapStateToProps, { resetTodos, addTodo })(AddTodo);
