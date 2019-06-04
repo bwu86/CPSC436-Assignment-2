@@ -13,7 +13,7 @@ export default function header() {
 const headerStyle = {
     position: 'center',
     textAlign: 'center',
-    fontSize: '24px',
+    fontSize: '28px',
     color: '#87ceeb', 
     textShadow: '0 0 6px #ffffff'
 }

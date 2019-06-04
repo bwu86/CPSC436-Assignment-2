@@ -4,19 +4,22 @@ import { combineReducers } from 'redux';
 const emptyState = []
 const initState = [
         {
-            key: uuid.v4(),
+            id: uuid.v4(),
             title: "Add something to do above...",
             completed: false,
+            time: new Date()
         },
         {
-            key: uuid.v4(),
+            id: uuid.v4(),
             title: "Tick the checkbox to cross out an item",
             completed: false,
+            time: new Date()
         },
         {
-            key: uuid.v4(),
+            id: uuid.v4(),
             title: "Click the red X to remove an item",
             completed: false,
+            time: new Date()
         }
 ]
 
@@ -27,9 +30,10 @@ const TodoReducer = (state = initState, action) => {
             return [
                         ...state,
                         {
-                            key: action.key,
+                            id: uuid.v4(),
                             title: action.title,
-                            completed: false
+                            completed: false,
+                            time: new Date()
                         }
                     ]
             
@@ -38,17 +42,15 @@ const TodoReducer = (state = initState, action) => {
             return emptyState;
 
         case 'REMOVE_TODO':
-            return [...state.filter(todo => todo.key !== action.key)]
+            return [...state.filter(todo => todo.id !== action.id)]
 
         case 'TOGGLE_TODO':
-                return Object.assign({}, state, {
-                    todos: state.todos.map( todo => {
-                        if (todo.key === action.key) {
-                            todo.completed = !todo.completed;
-                        }
-                    })
-                })
-
+            //Figure out how to modify this by copying
+            state.map(todo => {
+                if (todo.id === action.id) {
+                    todo.completed = !todo.completed;
+                }
+            })
         default:
             return state
     }

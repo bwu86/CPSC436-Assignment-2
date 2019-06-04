@@ -8,11 +8,10 @@ import About from './components/pages/About';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
-
   render(){
     return (
       <Router>
-        <div className="App">
+        <div className="App" style={appStyle}>
           <div className='container'>
             <Header />
             <Route exact path="/" render={todos => (
@@ -27,6 +26,10 @@ class App extends React.Component {
       </Router>
     );
   }
+}
+
+const appStyle = {
+  backgoundColor:'#fffff0'
 }
 
 const mapStateToProps = (state) => {

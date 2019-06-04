@@ -6,10 +6,9 @@ import { connect } from 'react-redux';
 
 class Todos extends Component {
     render(){
-        console.log(this.props.todos)
         return this.props.todos!= null && this.props.todos.map((todo) => (
             <div>
-                <TodoItem key={todo.key} title={todo.title} completed = {todo.completed}/>        
+                <TodoItem id={todo.id} title={todo.title} completed = {todo.completed} time={todo.time}/>        
             </div>
         ));
     }

@@ -1,25 +1,24 @@
-import uuid from 'uuid';
 
-export const addTodo = (title) => {
+export const addTodo = (title, id) => {
     return {
         type: 'ADD_TODO',
-        key: uuid.v4(),
+        id: id,
         title,
     };
 };
 
-export const toggleTodo = (key) => {
+export const toggleTodo = (id) => {
     return {
         type: 'TOGGLE_TODO',
-        key,
+        id: id,
     };
 };
 
 
-export const removeTodo = (key) => {
+export const removeTodo = (id) => {
     return {
         type: 'REMOVE_TODO',
-        key,
+        id,
     };
 };
 
