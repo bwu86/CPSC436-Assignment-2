@@ -46,11 +46,12 @@ const TodoReducer = (state = initState, action) => {
 
         case 'TOGGLE_TODO':
             //Figure out how to modify this by copying
-            state.map(todo => {
+            return [...state.map(todo => {
                 if (todo.id === action.id) {
                     todo.completed = !todo.completed;
                 }
-            })
+            })]
+
         default:
             return state
     }
