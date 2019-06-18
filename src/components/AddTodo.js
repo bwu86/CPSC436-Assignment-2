@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { resetTodos } from '../actions/TodoAction'
 import { addTodo } from '../actions/TodoAction'
 import { connect } from 'react-redux';
-import uuid from 'uuid';
 
 //Input bar class
 class AddTodo extends Component {

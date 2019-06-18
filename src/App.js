@@ -31,7 +31,7 @@ class App extends React.Component {
       method: 'POST',
       body:JSON.stringify(todo),
       headers :{
-        'Content-Type': 'application/jason'
+        'Content-Type': 'application/json'
       }
     })
       .then(res => res.json())
