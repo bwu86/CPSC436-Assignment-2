@@ -26,11 +26,12 @@ class TodoItem extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.removeTodo(this.props.id);
+        console.log(this.props)
+        this.props.removeTodoRequest(this.props.id)
     }
 
     onCheck = () => {
-        this.props.toggleTodo(this.props.id);
+        this.props.toggleTodo(this.props._id);
         this.forceUpdate()    
     }
 
@@ -45,7 +46,7 @@ class TodoItem extends Component {
         return(
             <div style={this.getStyle()}>
                 <p style = {pStyle}>
-                    <input type = "checkbox" onChange={this.onCheck}/> {' '}
+                    {/* <input type = "checkbox" onChange={this.onCheck}/> {' '} */}
                     {this.props.title}
                     {/*Add detailed view here!*/}
                     <button onClick={this.onSubmit} style = {buttonStyle}>x</button>

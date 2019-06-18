@@ -1,4 +1,3 @@
-
 export const addTodo = (title, id) => {
     return {
         type: 'ADD_TODO',
@@ -25,5 +24,11 @@ export const removeTodo = (id) => {
 export const resetTodos = () => {
     return {
         type: 'RESET_TODOS'
+    }
+}
+
+export const fetchTodos = () => {
+    return dispatch => {
+        
     }
 }
