@@ -54,7 +54,7 @@ const TodoReducer = (state = initState, action) => {
             
         
         case 'INIT_STATUS':
-            return [...state, action.todos]
+            return action.todos
 
         default:
             return state
