@@ -19,12 +19,11 @@ class App extends React.Component {
   getAPIData = async () => {
     const res = await fetch('/todos')
     const body = await res.json();
-    console.log(body)
     if (res.status !== 200){
       throw Error(body.message);
     }
-    return body
-  }
+    return body;
+  };
 
   addTodoRequest = (todo) => {
     fetch('/todos', {
@@ -37,7 +36,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(response => console.log('Successfully added an item:', JSON.stringify(response)))
       .catch(error => console.error('Error:', error));
-    this.componentDidMount()
+    this.componentDidMount();
   }
 
   removeTodoRequest = (id) => {
