@@ -14,7 +14,6 @@ class AddTodo extends Component {
                 completed: false,
                 time: new Date(),
             }
-            console.log(newItem)
             this.props.addTodoRequest(newItem);
             this.refs.todo.value = null;
         }
