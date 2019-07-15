@@ -13,9 +13,8 @@ const port = process.env.PORT || 5000;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tododb')
 mongoose.Promise = global.Promise;
 
-app.use(express.static(path.join(__dirname, "client", "build")))
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 app.use(bodyParser.json());
 
 //Routes
@@ -26,9 +25,10 @@ app.use( (err, req, res, next) => {
     res.status(422).send({error: err.message})
 })
 
+app.use(express.static(path.join(__dirname, "client", "build")));
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+})
 
 app.listen(port, () => {
     console.log(`Listening to port ${port}`)
