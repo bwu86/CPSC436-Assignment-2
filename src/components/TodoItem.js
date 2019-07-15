@@ -26,7 +26,6 @@ class TodoItem extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.props)
         this.props.removeTodoRequest(this.props.id)
     }
 

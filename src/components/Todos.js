@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 
 class Todos extends Component {
-      
       render(){
         console.log(this.props)
         return this.props.todos.map((todo) => (
