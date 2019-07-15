@@ -10,7 +10,7 @@ const PORT = process.env.MONGODB_URI || 5000;
 const app = express();
 
 //Connect to mongoDB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://bwu86:benbenben10@ds123645.mlab.com:23645/heroku_pc3tspq0")
+mongoose.connect(process.env.MONGODB_URI)
 mongoose.Promise = global.Promise;
 
 app.use(express.static('public'))
