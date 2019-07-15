@@ -2,6 +2,7 @@ const express = require('express');
 const todoRouter = require('./routes/api');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require("path")
 require("dotenv").config();
 
 const app = express();
@@ -14,6 +15,8 @@ mongoose.Promise = global.Promise;
 
 app.use(express.static('public'))
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "src", "build")))
+
 
 //Routes
 app.use(todoRouter);
@@ -22,6 +25,10 @@ app.use(todoRouter);
 app.use( (err, req, res, next) => {
     res.status(422).send({error: err.message})
 })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(port, () => {
     console.log(`Listening to port ${PORT}`)

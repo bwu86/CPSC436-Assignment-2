@@ -17,7 +17,7 @@
     "redux": "^4.0.1",
     "uuid": "^3.3.2"
   },
-  "engines":{
+  "engines": {
     "node": "10.15.3"
   },
   "scripts": {
