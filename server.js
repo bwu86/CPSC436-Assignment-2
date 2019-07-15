@@ -6,8 +6,10 @@ require("dotenv").config();
 
 const app = express();
 
+const port = process.env.PORT || 5000;
+
 //Connect to mongoDB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:5000/todos")
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tododb')
 
 mongoose.Promise = global.Promise;
 
@@ -23,12 +25,6 @@ app.use( (err, req, res, next) => {
     res.status(422).send({error: err.message})
 })
 
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "build", "index.html"));
-});
-
-
-app.listen(PORT, () => {
+app.listen(port, () => {
     console.log(`Listening to port ${PORT}`)
 })
