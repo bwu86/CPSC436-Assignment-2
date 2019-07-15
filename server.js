@@ -2,15 +2,14 @@ const express = require('express');
 const todoRouter = require('./routes/api');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const path = require("path");
 require("dotenv").config();
-
-const PORT = process.env.MONGODB_URI || 5000;
 
 const app = express();
 
+const port = process.env.PORT || 5000;
+
 //Connect to mongoDB
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tododb')
 mongoose.Promise = global.Promise;
 
 app.use(express.static('public'))
@@ -24,12 +23,6 @@ app.use( (err, req, res, next) => {
     res.status(422).send({error: err.message})
 })
 
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "build", "index.html"));
-});
-
-
-app.listen(PORT, () => {
+app.listen(port, () => {
     console.log(`Listening to port ${PORT}`)
 })
