@@ -2,16 +2,22 @@ import React, { Component } from 'react'
 import { resetTodos } from '../actions/TodoAction'
 import { addTodo } from '../actions/TodoAction'
 import { connect } from 'react-redux';
-import uuid from 'uuid';
 
 //Input bar class
 class AddTodo extends Component {
 
     onSubmit = (e) => {
         if(this.refs.todo.value){
-        this.props.addTodo(this.refs.todo.value);
-        this.refs.todo.value = ""
+            console.log(this.refs.todo.value)
+            let newItem = {
+                title: this.refs.todo.value,
+                completed: false,
+                time: new Date(),
+            }
+            this.props.addTodoRequest(newItem);
+            this.refs.todo.value = null;
         }
+
     }
 
     clearTodos = (e)=> {

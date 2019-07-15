@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Detail from '../Detail'
+import Detail from './Detail'
 import { connect } from 'react-redux';
 
 class TodoItem extends Component {
@@ -26,11 +26,11 @@ class TodoItem extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.removeTodo(this.props.id);
+        this.props.removeTodoRequest(this.props.id)
     }
 
     onCheck = () => {
-        this.props.toggleTodo(this.props.id);
+        this.props.toggleTodo(this.props._id);
         this.forceUpdate()    
     }
 
@@ -41,17 +41,17 @@ class TodoItem extends Component {
     }
 
     render() {
-        console.log(this.props.time)
+        console.log(this.props)
         return(
             <div style={this.getStyle()}>
                 <p style = {pStyle}>
-                    <input type = "checkbox" onChange={this.onCheck}/> {' '}
+                    {/* <input type = "checkbox" onChange={this.onCheck}/> {' '} */}
                     {this.props.title}
                     {/*Add detailed view here!*/}
                     <button onClick={this.onSubmit} style = {buttonStyle}>x</button>
                     <button style={{float: 'right'}} onClick={this.toggleDate}> See more... </button>
-                    {this.state.seeDate ? <Detail time={this.props.time.toString()}/> : null}
                 </p>
+                {this.state.seeDate ? <Detail time={this.props.time}/> : null}
             </div>
         );
     }
