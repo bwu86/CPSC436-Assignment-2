@@ -10,10 +10,12 @@ const port = process.env.PORT || 5000;
 
 //Connect to mongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tododb')
+
 mongoose.Promise = global.Promise;
 
 app.use(express.static('public'))
 app.use(bodyParser.json());
+app.use(dotenv);
 
 //Routes
 app.use(todoRouter);
