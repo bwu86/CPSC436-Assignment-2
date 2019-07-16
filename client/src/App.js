@@ -49,6 +49,16 @@ class App extends React.Component {
   this.componentDidMount()
   }
 
+  clearTodoRequest = (id) => {
+    fetch ('/todos', {
+      method: 'DELETE',
+    })
+    .then(res => res.json())
+    .then(response => console.log("Successfully cleared all items:", JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
+  this.componentDidMount()
+  }
+
   render(){
     return (
       <Router>
@@ -57,7 +67,7 @@ class App extends React.Component {
             <Header />
             <Route exact path="/" render={todos => (
               <React.Fragment>
-                <AddTodo addTodoRequest={this.addTodoRequest}/>
+                <AddTodo addTodoRequest={this.addTodoRequest} clearTodoRequest = {this.clearTodoRequest}/>
                 <Todos removeTodoRequest={this.removeTodoRequest}/>
               </React.Fragment>
             )} />

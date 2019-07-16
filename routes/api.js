@@ -32,4 +32,13 @@ router.delete('/todos/:id', (req, res, next) => {
     })
 });
 
+router.delete('/todos', async function(req, res, next) {
+    try {
+        let result = await Todo.deleteMany( {} );
+        res.status(200).send(result);
+    } catch (e) {
+        next(e)
+    }
+})
+
 module.exports = router

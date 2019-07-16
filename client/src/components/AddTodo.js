@@ -22,7 +22,8 @@ class AddTodo extends Component {
     }
 
     clearTodos = (e)=> {
-        this.props.resetTodos()
+        this.props.resetTodos();
+        this.props.clearTodoRequest();
     }
 
     render() {
