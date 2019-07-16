@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tododb')
 mongoose.Promise = global.Promise;
 
 
-app.use(express.static('public'));
+app.use(express.static('client/public'));
 app.use(bodyParser.json());
 
 //Routes
